@@ -1,0 +1,144 @@
+# Default Configuration for Superintelligence Multi-Modal Agentic AI Framework
+# This file contains the default settings for agents, models, and safety systems
+
+# Core Model Configurations
+language_model:
+  name: "gpt-4-turbo-preview"
+  model_type: "language"
+  provider: "openai"
+  max_tokens: 4096
+  temperature: 0.7
+  top_p: 0.9
+  frequency_penalty: 0.0
+  presence_penalty: 0.0
+  timeout: 60
+  retry_attempts: 3
+
+vision_model:
+  name: "gpt-4-vision-preview"
+  model_type: "vision"
+  provider: "openai"
+  max_tokens: 4096
+  temperature: 0.7
+  vision_detail: "high"
+
+audio_model:
+  name: "whisper-1"
+  model_type: "audio"
+  provider: "openai"
+  audio_format: "wav"
+
+embedding_model:
+  name: "text-embedding-ada-002"
+  model_type: "embedding"
+  provider: "openai"
+  embedding_dimensions: 1536
+
+# Agent Capabilities
+enable_web_search: true
+enable_code_execution: true
+enable_mind_map: true
+enable_multimodal: true
+enable_tool_calling: true
+
+# Reasoning Settings
+reasoning_mode: "balanced"  # fast, balanced, deep, research
+max_reasoning_steps: 50
+enable_chain_of_thought: true
+enable_test_time_scaling: true
+
+# Tool Configurations
+web_search_engines:
+  - "duckduckgo"
+  - "wikipedia"
+  - "arxiv"
+
+code_execution_timeout: 30
+code_execution_memory_limit: "1GB"
+
+# Memory and Context
+max_context_length: 32000
+enable_long_term_memory: true
+memory_persistence: true
+conversation_history_limit: 100
+
+# Safety Configuration
+safety:
+  level: "high"  # minimal, standard, high, maximum
+  enable_constitutional_ai: true
+  enable_harm_detection: true
+  enable_bias_monitoring: true
+  enable_privacy_protection: true
+  
+  # Constitutional Framework
+  core_values:
+    - "human_autonomy"
+    - "beneficence"
+    - "non_maleficence"
+    - "justice"
+  
+  harm_categories:
+    - "violence"
+    - "hate_speech"
+    - "misinformation"
+    - "privacy_violation"
+    - "illegal_activity"
+    - "self_harm"
+    - "child_safety"
+  
+  # Monitoring Thresholds
+  toxicity_threshold: 0.1
+  bias_threshold: 0.2
+  privacy_score_threshold: 0.8
+  
+  # Response Settings
+  enable_refusal: true
+  refusal_message: "I cannot provide assistance with that request due to safety concerns."
+  enable_warning: true
+  log_violations: true
+
+# Performance Settings
+max_parallel_agents: 5
+agent_timeout: 300
+enable_streaming: true
+
+# Monitoring and Logging
+enable_logging: true
+log_level: "INFO"
+enable_metrics: true
+metrics_endpoint: null
+
+# Custom Configurations
+custom_prompts: {}
+custom_tools: []
+
+# Research-specific settings (override defaults for research mode)
+research_mode:
+  reasoning_mode: "research"
+  max_reasoning_steps: 100
+  language_model:
+    max_tokens: 8192
+  enable_test_time_scaling: true
+  safety:
+    level: "high"
+
+# Fast mode settings (override defaults for fast mode)  
+fast_mode:
+  reasoning_mode: "fast"
+  max_reasoning_steps: 10
+  language_model:
+    temperature: 0.1
+  enable_test_time_scaling: false
+  safety:
+    level: "standard"
+
+# Maximum safety settings
+maximum_safety_mode:
+  safety:
+    level: "maximum"
+    enable_constitutional_ai: true
+    enable_harm_detection: true
+    enable_bias_monitoring: true
+    enable_privacy_protection: true
+    toxicity_threshold: 0.05
+    bias_threshold: 0.1
